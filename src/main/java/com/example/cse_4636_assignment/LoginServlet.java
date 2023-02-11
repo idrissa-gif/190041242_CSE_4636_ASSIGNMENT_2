@@ -28,8 +28,16 @@ public class LoginServlet extends HttpServlet {
             out.println("<html><body>"+
                     "<h1>Successfully Login !!!</h1>"+
                     "</body></html>");
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("homepage.html");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("homepage.jsp");
             requestDispatcher.include(req,resp);
+        }
+        else {
+            PrintWriter out = resp.getWriter();
+            out.println("<html><body>"+
+                    "<h1> Invalid Username or Password </h1>"+
+                    "</body></html>");
+            RequestDispatcher rd = req.getRequestDispatcher("login.html");
+            rd.include(req,resp);
         }
     }
 
